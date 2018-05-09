@@ -1,26 +1,27 @@
 class UsersController < ActionController::Base
-	respond_to :json
+	before_action :set_user, only: [:show, :create]
 	#Create
 	#Read
 	def index
-		users = User.all;
-		@response = [];
-		users.each do |user|
-			@response << user;
-		end
-		# @response = {user1: user1.username};
-		respond_with @response
-		# binding.pry
-		# respond_to do |format|
-		# 	format.html {render :index}
-		# 	format.json {render json: {
-		# 		hello: "world"
-		# 	}}
-		# end
+		@users = User.all;
+		render json: @users, status: 200
 	end
 
+	def show
+		render json: @user, status: 200		
+	end
 	#Update
 
 	#Destroy
 
+	private
+	  # Use callbacks to share common setup or constraints between actions.
+	  def set_user
+	    @user = User.find(params[:id])
+	  end
+
+	  # Never trust parameters from the scary internet, only allow the white list through.
+	  def user_params
+	    params.require(:user).permit(:username)
+	  end
 end
