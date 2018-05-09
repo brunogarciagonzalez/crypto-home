@@ -10,22 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507161423) do
+ActiveRecord::Schema.define(version: 20180509141826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "currencies", force: :cascade do |t|
-    t.string "api_historical"
-    t.string "api_live"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-  end
-
-  create_table "user_currencies", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "currency_id"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

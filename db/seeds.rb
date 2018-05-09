@@ -6,9 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-bitcoin = Currency.create(name: "Bitcoin", 
-	api_historical: "https://api.coindesk.com/v1/bpi/historical/close.json",
-	api_live: "https://api.coindesk.com/v1/bpi/currentprice.json");
 
 user_one = User.create(username: "Satoshi Nakamoto");
 user_two = User.create(username: "Vitalik Butterin");
@@ -16,6 +13,13 @@ user_three = User.create(username: "Jamie Dimon");
 user_four = User.create(username: "I.C. Weiner");
 user_five = User.create(username: "Phillip J. Fry");
 
-satoshiBitcoin = UserCurrency.create(user_id: user_one.id, 
-									 currency_id: bitcoin.id);
-
+message_1 = Message.create(user_id: user_one.id, content: "This message is from Satoshi");
+message_2 = Message.create(user_id: user_two.id, content: "This message is from Butterin");
+message_3 = Message.create(user_id: user_three.id, content: "This message is from Dimon");
+message_4 = Message.create(user_id: user_four.id, content: "This message is from Weiner");
+message_5 = Message.create(user_id: user_five.id, content: "This message is from Fry");
+message_6 = Message.create(user_id: user_one.id, content: "BITCOIN");
+message_7 = Message.create(user_id: user_two.id, content: "ETHEREUM");
+message_8 = Message.create(user_id: user_three.id, content: "J.P. MORGAN");
+message_9 = Message.create(user_id: user_four.id, content: "PIZZA");
+message_10 = Message.create(user_id: user_five.id, content: "FUTURAMA");
