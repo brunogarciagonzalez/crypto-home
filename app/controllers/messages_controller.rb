@@ -1,6 +1,13 @@
 class MessagesController < ApplicationController
-	before_action :set_message, only: [:show, :create]
+	before_action :set_message, only: [:show]
 	#Create
+	def create
+		@user = User.find_by(username: message_params[:username])
+		@message = Message.create(content: message_params[:content], user_id: @user.id)
+
+		render json: @message, status: 200
+	end
+
 	#Read
 	def index
 		@messages = Message.all;
@@ -8,8 +15,9 @@ class MessagesController < ApplicationController
 	end
 
 	def show
-		render json: @message, status: 200		
+		render json: @message, status: 200
 	end
+
 	#Update
 
 	#Destroy
@@ -22,6 +30,6 @@ class MessagesController < ApplicationController
 
 	  # Never trust parameters from the scary internet, only allow the white list through.
 	  def message_params
-	    params.require(:message).permit(:user_id, :content, :created_at)
+	    params.require(:message).permit(:content, :username)
 	  end
 end
