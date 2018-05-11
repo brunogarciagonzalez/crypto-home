@@ -4,8 +4,12 @@ class MessagesController < ApplicationController
 	def create
 		@user = User.find_by(username: message_params[:username])
 		@message = Message.create(content: message_params[:content], user_id: @user.id)
-
 		render json: @message, status: 200
+		ActionCable.server.broadcast 'messages',
+			content: @message.content,
+			user: {username: @user.username},
+			created_at: @message.created_at
+		head :ok
 	end
 
 	#Read
