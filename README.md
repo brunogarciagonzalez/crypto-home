@@ -1,4 +1,4 @@
-# crypto-home-frontend
+# crypto-home-backend
 ### A homepage with crypto currency graphs and google search
 
 <img src="https://raw.githubusercontent.com/brunogarciagonzalez/crypto-home-frontend/master/images/1.png" />
